@@ -2,6 +2,7 @@ package com.hr.managemnt.controller;
 
 import com.hr.managemnt.dto.DepartmentCountDTO;
 import com.hr.managemnt.dto.EmployeeVehicleDTO;
+import com.hr.managemnt.dto.TotalExperienceDTO;
 import com.hr.managemnt.model.Employee;
 import com.hr.managemnt.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,6 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
         // CRUD
-        @GetMapping
-        public List<Employee> getAllEmployees() {
-            return employeeService.getAll();
-        }
 
         @GetMapping("/{id}")
         public Employee getEmployeeById(@PathVariable String id) {
@@ -64,7 +61,6 @@ public class EmployeeController {
         }
 
 
-
         @GetMapping("/count")
         public long countEmployees() {
             return employeeService.countEmployees();
@@ -101,12 +97,5 @@ public class EmployeeController {
             return employeeService.countEmployeesByDepartment();
         }
 
-
-    /*
-    @GetMapping("/experience-summary")
-    public List<TotalExperienceDTO> getTotalExperienceYearsPerEmployee() {
-        return employeeService.getTotalExperienceYearsPerEmployee();
-    }
-    */
 
 }

@@ -1,12 +1,9 @@
 package com.hr.managemnt.repository;
 
-import com.hr.managemnt.model.Person;
+
+import com.hr.managemnt.model.Persons;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.stereotype.Repository;
 
-import java.util.List;
+public interface PersonRepository extends MongoRepository<Persons, String> {
 
-@Repository
-public interface PersonRepository extends MongoRepository<Person, String> {
-    List<Person> findByEyeColor(String eyeColor);
 }

@@ -24,9 +24,6 @@ public class EmployeeService {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    public List<Employee> getAll() {
-        return employeeRepository.findAll();
-    }
 
     public Employee getById(String id) {
         return employeeRepository.findById(id).orElse(null);
@@ -96,16 +93,7 @@ public class EmployeeService {
         return employeeRepository.findByNameRegex(regex);
     }
 
-    // Aggregation: total experience years per employee
-   /* public List<TotalExperienceDTO> getTotalExperienceYearsPerEmployee() {
-        Aggregation agg = Aggregation.newAggregation(
-                Aggregation.project("name", "department")
-                        .andExpression("experience.years").sum().as("totalExperienceYears")
-        );
 
-        AggregationResults<TotalExperienceDTO> results = mongoTemplate.aggregate(agg, "employee", TotalExperienceDTO.class);
-        return results.getMappedResults();
-    }*/
 
     // Aggregation: Join employee with vehicle collection
     public List<EmployeeVehicleDTO> getEmployeesWithVehicles() {
