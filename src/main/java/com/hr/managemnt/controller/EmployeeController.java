@@ -19,6 +19,11 @@ public class EmployeeController {
 
         // CRUD
 
+       @GetMapping("/")
+       public List<Employee> getEmployee() {
+        return employeeService.getAllEmployees();
+    }
+
         @GetMapping("/{id}")
         public Employee getEmployeeById(@PathVariable String id) {
             return employeeService.getById(id);
